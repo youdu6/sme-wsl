@@ -2,7 +2,7 @@ package com.wsl.entities;
 
 import java.util.Date;
 
-public class order {
+public class Order {
 
     private Integer id;
     private Integer uid;
@@ -25,7 +25,7 @@ public class order {
     public Date getPurchaseDate(){return purchaseDate;}
     public void setPurchaseDate(Date purchaseDate){this.purchaseDate=purchaseDate;}
 
-    public order(Integer id, Integer uid, Integer gid, Integer pid, Date purchaseDate) {
+    public Order(Integer id, Integer uid, Integer gid, Integer pid, Date purchaseDate) {
         super();
         this.id = id;
         this.uid=uid;
@@ -34,12 +34,12 @@ public class order {
         this.purchaseDate=purchaseDate;
     }
 
-    public order() {
+    public Order() {
     }
 
     @Override
     public String toString() {
-        return "order{" +
+        return "Order{" +
                 "id=" + id +
                 ", uid='" + uid + '\'' +
                 ", gid" + gid + '\'' +

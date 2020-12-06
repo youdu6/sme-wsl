@@ -76,6 +76,8 @@
 						<td>
 							<a class="btn btn-sm btn-primary" th:href="@{/emp/}+${emp.id}">编辑</a>
 							<button th:attr="del_uri=@{/emp/}+${emp.id}" class="btn btn-sm btn-danger deleteBtn">删除</button>
+<!--							<a class="btn btn-sm btn-primary" th:href="@{/emp/buy}+${emp.id,session.loginUser}">购买</a>-->
+							<a class="btn btn-sm btn-primary" th:href="@{/buy(id=${emp.id},loginUser=${session.loginUser})}">购买</a>
 						</td>
 					</tr>
 					</tbody>
@@ -83,6 +85,9 @@
 			</div>
 		</main>
 		<form id="deleteEmpForm"  method="post">
+			<input type="hidden" name="_method" value="delete"/>
+		</form>
+		<form id="buyEmpForm"  method="post">
 			<input type="hidden" name="_method" value="delete"/>
 		</form>
 	</div>
@@ -104,6 +109,13 @@
 			$(".deleteBtn").click(function(){
 			    //删除当前员工的
 			    $("#deleteEmpForm").attr("action",$(this).attr("del_uri")).submit();
+			    return false;
+            });
+		</script>
+<script>
+			$(".buyBtn").click(function(){
+			    //删除当前员工的
+			    $("#buyEmpForm").attr("action",$(this).attr("buy_uri")).submit();
 			    return false;
             });
 		</script>

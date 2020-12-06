@@ -42,6 +42,15 @@ public class UserDao {
         return users.get(id);
     }
 
+    public User getByName(String name){
+        for (User user:this.getAll()){
+            if (user.getName().equals(name)){
+                return user;
+            }
+        }
+        return null;
+    }
+
     public void delete(Integer id){
         users.remove(id);
     }

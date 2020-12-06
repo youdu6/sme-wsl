@@ -1,8 +1,10 @@
 package com.wsl.controller;
 
 import com.wsl.dao.GameDao;
+import com.wsl.dao.UserDao;
 import com.wsl.entities.Department;
 import com.wsl.entities.Game;
+import com.wsl.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +21,8 @@ public class GameController {
     @Autowired
     GameDao gameDao;
 
-
+    @Autowired
+    UserDao userDao;
     //查询所有员工返回列表页面
     @GetMapping("/emps")
     public String  list(Model model){
@@ -57,6 +60,18 @@ public class GameController {
         Game game = gameDao.get(id);
         model.addAttribute("emp", game);
 
+        //页面要显示所有的部门列表
+        //回到修改页面(add是一个修改添加二合一的页面);
+        return "emp/add";
+    }
+
+    @GetMapping("/buy")
+    public String toBuyPage(@RequestParam("id") Integer id,Model model,
+                            @RequestParam("loginUser") String loginUser){
+        Game game = gameDao.get(id);
+        model.addAttribute("emp", game);
+        User buyer=userDao.getByName(loginUser);
+        model.addAttribute("buyer", buyer);
         //页面要显示所有的部门列表
         //回到修改页面(add是一个修改添加二合一的页面);
         return "emp/add";
