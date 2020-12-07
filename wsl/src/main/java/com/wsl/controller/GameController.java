@@ -65,17 +65,7 @@ public class GameController {
         return "emp/add";
     }
 
-    @GetMapping("/buy")
-    public String toBuyPage(@RequestParam("id") Integer id,Model model,
-                            @RequestParam("loginUser") String loginUser){
-        Game game = gameDao.get(id);
-        model.addAttribute("emp", game);
-        User buyer=userDao.getByName(loginUser);
-        model.addAttribute("buyer", buyer);
-        //页面要显示所有的部门列表
-        //回到修改页面(add是一个修改添加二合一的页面);
-        return "emp/add";
-    }
+
 
     //员工修改；需要提交员工id；
     @PutMapping("/emp")

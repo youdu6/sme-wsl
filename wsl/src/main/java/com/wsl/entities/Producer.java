@@ -2,7 +2,7 @@ package com.wsl.entities;
 
 import java.util.Date;
 
-public class producer {
+public class Producer {
 
     private Integer id;
     private String name;
@@ -34,19 +34,19 @@ public class producer {
     public Integer getTelephone(){return telephone;}
     public void setTelephone(Integer telephone){this.telephone=telephone;}
 
-    public producer(Integer id, String Name, Integer password) {
+    public Producer(Integer id, String Name, Integer password) {
         super();
         this.id = id;
         this.name = Name;
         this.password=password;
     }
 
-    public producer() {
+    public Producer() {
     }
 
     @Override
     public String toString() {
-        return "producer{" +
+        return "Producer{" +
                 "id=" + id +
                 ", Name='" + name + '\'' +
                 ", password" + password +

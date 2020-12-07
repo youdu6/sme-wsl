@@ -1,13 +1,20 @@
 package com.wsl.entities;
 
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class Order {
 
     private Integer id;
     private Integer uid;
+    private String uName;
     private Integer gid;
+    private String gName;
     private Integer pid;
+    private String pName;
+    private String type;
     private Date purchaseDate;
 
     public Integer getId() {
@@ -25,13 +32,17 @@ public class Order {
     public Date getPurchaseDate(){return purchaseDate;}
     public void setPurchaseDate(Date purchaseDate){this.purchaseDate=purchaseDate;}
 
-    public Order(Integer id, Integer uid, Integer gid, Integer pid, Date purchaseDate) {
+    public Order(Integer id, String uName,Integer uid, String gName,Integer gid, Integer pid, String pName, Date purchaseDate,String type) {
         super();
+        this.uName=uName;
+        this.gName=gName;
         this.id = id;
         this.uid=uid;
         this.gid=gid;
         this.pid=pid;
+        this.pName=pName;
         this.purchaseDate=purchaseDate;
+        this.type=type;
     }
 
     public Order() {
