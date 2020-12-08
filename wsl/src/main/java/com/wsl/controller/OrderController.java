@@ -3,7 +3,6 @@ package com.wsl.controller;
 import com.wsl.dao.GameDao;
 import com.wsl.dao.OrderDao;
 import com.wsl.dao.UserDao;
-import com.wsl.entities.Department;
 import com.wsl.entities.Game;
 import com.wsl.entities.Order;
 import com.wsl.entities.User;
@@ -13,11 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-import java.util.regex.Pattern;
 
 @Controller
 public class OrderController {

@@ -2,18 +2,14 @@ package com.wsl.controller;
 
 import com.wsl.dao.GameDao;
 import com.wsl.dao.UserDao;
-import com.wsl.entities.Department;
 import com.wsl.entities.Game;
-import com.wsl.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.regex.Pattern;
 
 @Controller

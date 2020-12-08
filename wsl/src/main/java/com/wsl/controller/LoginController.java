@@ -1,7 +1,9 @@
 package com.wsl.controller;
 
+import com.wsl.dao.ProducerDao;
 import com.wsl.dao.UserDao;
 import com.wsl.entities.Game;
+import com.wsl.entities.Producer;
 import com.wsl.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,8 @@ public class LoginController {
 //    @GetMapping
     @Autowired
     UserDao userDao;
+    @Autowired
+    ProducerDao producerDao;
     //@RequestMapping(value = "/User/login",method = RequestMethod.POST)
     @PostMapping(value = "/user/login")
     public String login(@RequestParam("username") String username,
@@ -32,20 +36,34 @@ public class LoginController {
             if (user.getName().equals(username)){
                 if (user.getPassword()==Integer.parseInt(password)) {
                     session.setAttribute("loginUser", username);
+                    session.setAttribute("isUser",true);
                     return "redirect:/main.html";
                 }else break;
             }
         }
+
+
+        Collection<Producer>  producers=producerDao.getAll();
+        for (Producer producer:producers){
+            if (producer.getName().equals(username)){
+                if (producer.getPassword()==Integer.parseInt(password)) {
+                    session.setAttribute("loginUser", username);
+                    session.setAttribute("isUser",false);
+                    return "redirect:/main.html";
+                }else break;
+            }
+        }
+
 //        if(!StringUtils.isEmpty(username) && "123456".equals(password)){
 //
 //            session.setAttribute("loginUser",username);
 //            return "redirect:/main.html";
 ////            return "dashboard2";
 //        }else{
-            map.put("msg","username/password wrong!");
-            return  "login";
-//        }
 
+//        }
+        map.put("msg","username/password wrong!");
+        return  "login";
     }
 
     @GetMapping(value = "/user/register")

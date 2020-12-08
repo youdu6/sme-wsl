@@ -24,7 +24,7 @@ public class UserDao {
 
     }
 
-    private static Integer initId = 1006;
+    private static Integer initId = 1004;
 
     public void save(User user){
         if(user.getId() == null){

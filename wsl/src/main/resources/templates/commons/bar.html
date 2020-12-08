@@ -66,7 +66,7 @@
                     游戏列表
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" th:if="${session.isUser==true}">
                 <a class="nav-link active" href="#" th:href="@{/orders}"
                    th:class="${activeUri=='orders'?'nav-link active':'nav-link'}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2">
@@ -77,16 +77,18 @@
                     订单管理
                 </a>
             </li>
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" href="http://getbootstrap.com/docs/4.0/examples/dashboard/#">-->
-<!--                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers">-->
-<!--                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>-->
-<!--                        <polyline points="2 17 12 22 22 17"></polyline>-->
-<!--                        <polyline points="2 12 12 17 22 12"></polyline>-->
-<!--                    </svg>-->
-<!--                    Integrations-->
-<!--                </a>-->
-<!--            </li>-->
+            <li class="nav-item" th:if="${session.isUser==false}">
+<!--            <li class="nav-item" >-->
+            <a class="nav-link active" href="#" th:href="@{/pLists}"
+                   th:class="${activeUri=='pList'?'nav-link active':'nav-link'}" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                    游戏管理
+                </a>
+            </li>
         </ul>
 
 <!--        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">-->
