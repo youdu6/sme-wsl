@@ -14,7 +14,7 @@
 	</head>
 	<body class="text-center">
 	<form class="form-signin" action="dashboard.html" th:action="@{/user/login}" method="post">
-		<img class="mb-4" th:src="@{/asserts/img/bootstrap-solid.svg}" src="asserts/img/bootstrap-solid.svg" alt="" width="72" height="72">
+		<img class="mb-4" th:src="@{/asserts/img/favicon.ico}" src="asserts/img/bootstrap-solid.svg" alt="" width="72" height="72">
 		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 		<!--判断-->
 		<p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
