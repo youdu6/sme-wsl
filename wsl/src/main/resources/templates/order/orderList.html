@@ -75,8 +75,7 @@
                         <td th:text="${order.pName}"></td>
                         <td th:text="${order.type}"></td>
                         <td th:text="${order.purchaseDate}"></td>
-                        <td th:text="${order.purchaseDate}"></td>
-                        <td>
+                        <td th:if="${session.isAdmin==false}">
                         <a class="btn btn-sm btn-primary" th:href="@{/comment(gid=${order.gid},loginUser=${session.loginUser})}">评价</a>
                         </td>
                     </tr>

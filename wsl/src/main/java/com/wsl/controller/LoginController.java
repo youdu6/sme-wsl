@@ -1,12 +1,10 @@
 package com.wsl.controller;
 
+import com.wsl.dao.AdminDao;
 import com.wsl.dao.CartDao;
 import com.wsl.dao.ProducerDao;
 import com.wsl.dao.UserDao;
-import com.wsl.entities.Cart;
-import com.wsl.entities.Game;
-import com.wsl.entities.Producer;
-import com.wsl.entities.User;
+import com.wsl.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -31,6 +29,8 @@ public class LoginController {
     ProducerDao producerDao;
     @Autowired
     CartDao cartDao;
+    @Autowired
+    AdminDao adminDao;
     //@RequestMapping(value = "/User/login",method = RequestMethod.POST)
     @PostMapping(value = "/user/login")
     public String login(@RequestParam("username") String username,
@@ -42,6 +42,7 @@ public class LoginController {
                 if (user.getPassword()==Integer.parseInt(password)) {
                     session.setAttribute("loginUser", username);
                     session.setAttribute("isUser",true);
+                    session.setAttribute("isAdmin",false);
                     return "redirect:/main.html";
                 }else break;
             }
@@ -54,6 +55,19 @@ public class LoginController {
                 if (producer.getPassword()==Integer.parseInt(password)) {
                     session.setAttribute("loginUser", username);
                     session.setAttribute("isUser",false);
+                    session.setAttribute("isAdmin",false);
+                    return "redirect:/main.html";
+                }else break;
+            }
+        }
+
+        Collection<Admin> admins=adminDao.getAll();
+        for (Admin admin:admins){
+            if (admin.getName().equals(username)){
+                if (admin.getPassword()==Integer.parseInt(password)) {
+                    session.setAttribute("loginUser", username);
+                    session.setAttribute("isUser",false);
+                    session.setAttribute("isAdmin",true);
                     return "redirect:/main.html";
                 }else break;
             }

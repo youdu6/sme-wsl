@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.regex.Pattern;
@@ -33,7 +34,8 @@ public class GameController {
 
     //来到员工添加页面
     @GetMapping("/emp")
-    public String toAddPage(Model model){
+    public String toAddPage(Model model,
+                            HttpSession session){
         //来到添加页面,查出所有的部门，在页面显示
         return "emp/add";
     }
@@ -79,7 +81,8 @@ public class GameController {
     }
 
     @GetMapping("/signout")
-    public String signout(){
+    public String signout(HttpSession session){
+        session=null;
         return "redirect:/";
     }
 

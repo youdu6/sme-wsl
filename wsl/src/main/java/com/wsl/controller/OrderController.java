@@ -31,6 +31,11 @@ public class OrderController {
     @GetMapping("/orders")
     public String getOrder(Model model,
                            HttpSession session){
+        if (session.getAttribute("isAdmin").equals(true)){
+            Collection<Order> orders=orderDao.getAll();
+            model.addAttribute("orders",orders);
+            return "order/orderList";
+        }
         Collection<Order> orders=orderDao.getByU((String) session.getAttribute("loginUser"));
         model.addAttribute("orders",orders);
         return "order/orderList";

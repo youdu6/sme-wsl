@@ -69,13 +69,13 @@
 				</div>
 				<div class="form-group">
 					<label>生产商ID</label>
-					<input name="pid" type="text" class="form-control" placeholder="xxx" th:value="${emp!=null}?${emp.pid}" hidden>
-					<p style="font-size:20px">[[${emp.pid}]]</p>
+					<input name="pid" type="text" class="form-control" placeholder="xxx" th:value="${emp!=null}?${emp.pid}" >
+<!--					<p style="font-size:20px" th:if="${emp!=null}">[[${emp.pid}]]</p>-->
 				</div>
 				<div class="form-group">
 					<label>生产商</label>
-					<input name="pName" type="text" class="form-control" placeholder="xxx" th:value="${emp!=null}?${emp.pName}" hidden>
-					<p style="font-size:20px">[[${emp.pName}]]</p>
+					<input name="pName" type="text" class="form-control" placeholder="xxx" th:value="${emp!=null}?${emp.pName}" >
+<!--					<p style="font-size:20px" th:if="${emp!=null}">[[${emp.pName}]]</p>-->
 				</div>
 				<div class="form-group">
 					<label>类型</label>

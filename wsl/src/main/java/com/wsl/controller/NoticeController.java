@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Collection;
 
 @Controller
-public class pListController {
+public class NoticeController {
     @Autowired
     GameDao gameDao;
 
@@ -29,14 +29,14 @@ public class pListController {
     //查询所有员工返回列表页面
     @Autowired
     OrderDao orderDao;
-    @GetMapping("/pLists")
+    @GetMapping("/notices")
     public String getOrder(Model model,
                            HttpSession session){
-//        if (session.getAttribute("isAdmin").equals(true)){
-//            Collection<Game> games=gameDao.getAll();
-//            model.addAttribute("games",games);
-//            return "emp/pList";
-//        }
+        if (session.getAttribute("isAdmin").equals(true)){
+            Collection<Game> games=gameDao.getAll();
+            model.addAttribute("games",games);
+            return "emp/pList";
+        }
         Collection<Game> games=gameDao.getBypName((String) session.getAttribute("loginUser"));
         model.addAttribute("games",games);
         return "emp/pList";
