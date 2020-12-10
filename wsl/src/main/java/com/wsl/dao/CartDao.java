@@ -5,6 +5,7 @@ import com.wsl.entities.Game;
 import com.wsl.entities.Order;
 import org.springframework.stereotype.Repository;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 @Repository
@@ -15,9 +16,9 @@ public class CartDao {
 
     static{
         carts = new HashMap<Integer, Cart>();
-        carts.put(1001, new Cart(1001,new ArrayList<>(),"刘希",new Date()));
-        carts.put(1002, new Cart(1002,new ArrayList<>(),"孙立飞",new Date()));
-        carts.put(1003, new Cart(1003,new ArrayList<>(),"王新宇",new Date()));
+        carts.put(1001, new Cart(1001,new ArrayList<Game>(),"刘希"));
+        carts.put(1002, new Cart(1002,new ArrayList<Game>(),"孙立飞"));
+        carts.put(1003, new Cart(1003,new ArrayList<Game>(),"王新宇"));
     }
 
     private static Integer initId = 1004;
@@ -26,6 +27,7 @@ public class CartDao {
         if(cart.getId() == null){
             cart.setId(initId++);
         }
+
         carts.put(cart.getId(), cart);
     }
 
@@ -38,10 +40,27 @@ public class CartDao {
         return carts.get(id);
     }
 
+    public Cart getByuName(String uName){
+        for (Cart cart:this.getAll()){
+            if (cart.getuName().equals(uName)){
+                return cart;
+            }
+        }
+        return null;
+    }
+
     public void delete(Integer id){
         carts.remove(id);
     }
 
+    public ArrayList<Game> getGames(String uName){
+        for (Cart cart:this.getAll()){
+            if (cart.getuName().equals(uName)){
+                return cart.getGames();
+            }
+        }
+        return null;
+    }
 //    public Collection<Game> getBypName(String pName){
 //        Map<Integer, Game> newGames = null;
 //        newGames=new HashMap<Integer, Game>();

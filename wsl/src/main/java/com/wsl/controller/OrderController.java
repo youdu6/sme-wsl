@@ -1,8 +1,10 @@
 package com.wsl.controller;
 
+import com.wsl.dao.CartDao;
 import com.wsl.dao.GameDao;
 import com.wsl.dao.OrderDao;
 import com.wsl.dao.UserDao;
+import com.wsl.entities.Cart;
 import com.wsl.entities.Game;
 import com.wsl.entities.Order;
 import com.wsl.entities.User;
@@ -24,6 +26,8 @@ public class OrderController {
     //查询所有员工返回列表页面
     @Autowired
     OrderDao orderDao;
+    @Autowired
+    CartDao cartDao;
     @GetMapping("/orders")
     public String getOrder(Model model,
                            HttpSession session){
@@ -39,6 +43,20 @@ public class OrderController {
         model.addAttribute("emp", game);
         User buyer=userDao.getByName(loginUser);
         model.addAttribute("buyer", buyer);
+        //页面要显示所有的部门列表
+        //回到修改页面(add是一个修改添加二合一的页面);
+        return "emp/buy";
+    }
+
+    @GetMapping("/buyPlus")
+    public String toBuyPlusPage(@RequestParam("id") Integer id,Model model,
+                            @RequestParam("loginUser") String loginUser){
+        Game game = gameDao.get(id);
+        model.addAttribute("emp", game);
+        User buyer=userDao.getByName(loginUser);
+        model.addAttribute("buyer", buyer);
+        Cart cart=cartDao.getByuName(loginUser);
+        cart.getGames().remove(gameDao.get(id));
         //页面要显示所有的部门列表
         //回到修改页面(add是一个修改添加二合一的页面);
         return "emp/buy";

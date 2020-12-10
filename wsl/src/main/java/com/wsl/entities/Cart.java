@@ -5,15 +5,23 @@ import java.util.Date;
 
 public class Cart {
     private Integer id;
-    private ArrayList<String> gName;
+    private ArrayList<Game> games;
     private String uName;
-    private Date date;
+    private Integer cnt;
 
-    public Cart(Integer id, ArrayList<String> gName, String uName, Date date) {
+    public Cart(Integer id, ArrayList<Game> games, String uName) {
         this.id = id;
-        this.gName = gName;
+        this.games = games;
         this.uName = uName;
-        this.date = date;
+
+    }
+
+    public Integer getCnt() {
+        return cnt;
+    }
+
+    public void setCnt(Integer cnt) {
+        this.cnt = cnt;
     }
 
     public Integer getId() {
@@ -24,12 +32,13 @@ public class Cart {
         this.id = id;
     }
 
-    public ArrayList<String> getgName() {
-        return gName;
+
+    public ArrayList<Game> getGames() {
+        return games;
     }
 
-    public void setgName(ArrayList<String> gName) {
-        this.gName = gName;
+    public void setGames(ArrayList<Game> games) {
+        this.games = games;
     }
 
     public String getuName() {
@@ -38,14 +47,6 @@ public class Cart {
 
     public void setuName(String uName) {
         this.uName = uName;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
 

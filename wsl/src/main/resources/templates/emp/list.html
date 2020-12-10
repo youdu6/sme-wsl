@@ -78,6 +78,7 @@
 <!--							<button th:attr="del_uri=@{/emp/}+${emp.id}" class="btn btn-sm btn-danger deleteBtn">删除</button>-->
 <!--							<a class="btn btn-sm btn-primary" th:href="@{/emp/buy}+${emp.id,session.loginUser}">购买</a>-->
 							<a class="btn btn-sm btn-primary" th:href="@{/buy(id=${emp.id},loginUser=${session.loginUser})}">购买</a>
+							<a class="btn btn-sm btn-primary" th:href="@{/cart(id=${emp.id},loginUser=${session.loginUser})}">添加到购物车</a>
 						</td>
 					</tr>
 					</tbody>

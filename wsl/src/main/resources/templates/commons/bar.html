@@ -74,7 +74,7 @@
                         <line x1="12" y1="20" x2="12" y2="4"></line>
                         <line x1="6" y1="20" x2="6" y2="14"></line>
                     </svg>
-                    订单管理
+                    我的订单
                 </a>
             </li>
             <li class="nav-item" th:if="${session.isUser==false}">
@@ -87,6 +87,30 @@
                         <polyline points="2 12 12 17 22 12"></polyline>
                     </svg>
                     游戏管理
+                </a>
+            </li>
+            <li class="nav-item" th:if="${session.isUser==true}">
+                <!--            <li class="nav-item" >-->
+                <a class="nav-link active" href="#" th:href="@{/carts}"
+                   th:class="${activeUri=='cart'?'nav-link active':'nav-link'}" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                    我的购物车
+                </a>
+            </li>
+            <li class="nav-item" >
+                <!--            <li class="nav-item" >-->
+                <a class="nav-link active" href="#" th:href="@{/comments}"
+                   th:class="${activeUri=='comment'?'nav-link active':'nav-link'}" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                    评论区
                 </a>
             </li>
         </ul>

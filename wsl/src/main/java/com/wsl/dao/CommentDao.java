@@ -28,6 +28,7 @@ public class CommentDao {
         if(comment.getId() == null){
             comment.setId(initId++);
         }
+        comment.setDate(new Date());
         comments.put(comment.getId(), comment);
     }
 

@@ -1,7 +1,9 @@
 package com.wsl.controller;
 
+import com.wsl.dao.CartDao;
 import com.wsl.dao.ProducerDao;
 import com.wsl.dao.UserDao;
+import com.wsl.entities.Cart;
 import com.wsl.entities.Game;
 import com.wsl.entities.Producer;
 import com.wsl.entities.User;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
@@ -26,6 +29,8 @@ public class LoginController {
     UserDao userDao;
     @Autowired
     ProducerDao producerDao;
+    @Autowired
+    CartDao cartDao;
     //@RequestMapping(value = "/User/login",method = RequestMethod.POST)
     @PostMapping(value = "/user/login")
     public String login(@RequestParam("username") String username,
@@ -76,6 +81,7 @@ public class LoginController {
                                 @RequestParam("password") String password){
         Collection<User> users=userDao.getAll();
         userDao.save(new User(null,username,Integer.parseInt(password)));
+        cartDao.save(new Cart(null,new ArrayList<Game>(),username));
         return "redirect:/";
     }
 }

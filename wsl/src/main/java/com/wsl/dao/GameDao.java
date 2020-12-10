@@ -48,10 +48,10 @@ public class GameDao {
 		games.remove(id);
 	}
 
-	public String findById(Integer id){
+	public Game findById(Integer id){
 		for (Game game:this.getAll()){
 			if (game.getId().equals(id)){
-				return game.getName();
+				return game;
 			}
 		}
 		return null;
