@@ -1,9 +1,6 @@
 package com.wsl.controller;
 
-import com.wsl.dao.AdminDao;
-import com.wsl.dao.CartDao;
-import com.wsl.dao.ProducerDao;
-import com.wsl.dao.UserDao;
+import com.wsl.dao.*;
 import com.wsl.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,12 +28,15 @@ public class LoginController {
     CartDao cartDao;
     @Autowired
     AdminDao adminDao;
+    @Autowired
+    NoticeDao noticeDao;
     //@RequestMapping(value = "/User/login",method = RequestMethod.POST)
     @PostMapping(value = "/user/login")
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password,
                         Map<String, Object> map, HttpSession session){
         Collection<User>  users=userDao.getAll();
+        session.setAttribute("notices",noticeDao.getAll());
         for (User user:users){
             if (user.getName().equals(username)){
                 if (user.getPassword()==Integer.parseInt(password)) {
