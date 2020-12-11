@@ -47,4 +47,9 @@ public class CommentController {
         commentDao.save(comment);
         return "redirect:/comments";
     }
+    @DeleteMapping("/comment/{id}")
+    public String deleteComment(@PathVariable("id") Integer id){
+        commentDao.delete(id);
+        return "redirect:/comments";
+    }
 }
