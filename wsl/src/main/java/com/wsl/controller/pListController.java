@@ -32,11 +32,11 @@ public class pListController {
     @GetMapping("/pLists")
     public String getOrder(Model model,
                            HttpSession session){
-//        if (session.getAttribute("isAdmin").equals(true)){
-//            Collection<Game> games=gameDao.getAll();
-//            model.addAttribute("games",games);
-//            return "emp/pList";
-//        }
+        if (session.getAttribute("isAdmin").equals(true)){
+            Collection<Game> games=gameDao.getAll();
+            model.addAttribute("games",games);
+            return "emp/pList";
+        }
         Collection<Game> games=gameDao.getBypName((String) session.getAttribute("loginUser"));
         model.addAttribute("games",games);
         return "emp/pList";

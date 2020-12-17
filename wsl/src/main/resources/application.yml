@@ -1,0 +1,4 @@
+#spring:
+#  datasource:
+#    driver-class-name:com.microsoft.sqlserver.jdbc.SQLServerDriver
+#    ConnectionTestQuery:SELECT 1
