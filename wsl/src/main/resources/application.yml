@@ -1,4 +1,11 @@
-#spring:
-#  datasource:
-#    driver-class-name:com.microsoft.sqlserver.jdbc.SQLServerDriver
-#    ConnectionTestQuery:SELECT 1
+spring:
+  datasource:
+    username: root
+    password: w20010904
+    url: jdbc:mysql://8.210.115.67:3306/Gameshop
+    driver-class-name: com.mysql.jdbc.Driver
+    initialization-mode: always
+    schema:
+      - classpath:SQL/test.sql
+      - classpath:SQL/表.sql
+      - classpath:SQL/插入.sql

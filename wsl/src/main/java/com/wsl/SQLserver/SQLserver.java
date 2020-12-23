@@ -1,7 +1,8 @@
 package com.wsl.SQLserver;
 
 import java.sql.*;
-public class SQL {
+
+public class SQLserver {
     public void connect() {
         String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
         String dbURL = "jdbc:sqlserver://localhost:1433;DatabaseName=student";
