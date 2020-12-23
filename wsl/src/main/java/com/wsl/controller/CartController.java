@@ -2,6 +2,7 @@ package com.wsl.controller;
 
 import com.wsl.dao.*;
 import com.wsl.entities.*;
+import com.wsl.mapper.CartMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,9 @@ public class CartController {
     OrderDao orderDao;
     @Autowired
     CartDao cartDao;
+
+    @Autowired
+    CartMapper cartMapper;
     @GetMapping("/carts")
     public String getOrder(Model model,
                            HttpSession session){
@@ -41,6 +45,7 @@ public class CartController {
                             @RequestParam("loginUser") String loginUser){
         Cart cart=cartDao.getByuName(loginUser);
         cart.getGames().add(gameDao.get(id));
+        cartMapper.insertCartGame(cart,gameDao.get(id));
         return "redirect:/carts";
     }
 
@@ -49,6 +54,7 @@ public class CartController {
                              @RequestParam("loginUser") String loginUser){
         Cart cart=cartDao.getByuName(loginUser);
         cart.getGames().remove(gameDao.get(id));
+        cartMapper.deleteCartGameById(cart,gameDao.get(id));
         return "redirect:/carts";
     }
 }

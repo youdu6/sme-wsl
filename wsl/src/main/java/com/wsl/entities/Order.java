@@ -16,6 +16,15 @@ public class Order {
     private String pName;
     private String type;
     private Date purchaseDate;
+    private double price;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     public Integer getId() {
         return id;
@@ -43,6 +52,20 @@ public class Order {
         this.pName=pName;
         this.purchaseDate=purchaseDate;
         this.type=type;
+    }
+
+    public Order(Integer id, String uName,Integer uid, String gName,Integer gid, Integer pid, String pName, Date purchaseDate,String type,double price) {
+        super();
+        this.uName=uName;
+        this.gName=gName;
+        this.id = id;
+        this.uid=uid;
+        this.gid=gid;
+        this.pid=pid;
+        this.pName=pName;
+        this.purchaseDate=purchaseDate;
+        this.type=type;
+        this.price=price;
     }
 
     public Order() {

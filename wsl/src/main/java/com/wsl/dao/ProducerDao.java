@@ -19,13 +19,13 @@ public class ProducerDao {
 
     static{
         producers = new HashMap<Integer, Producer>();
-        producers.put(1001, new Producer(1001, "lx",123456));
-        producers.put(1002, new Producer(1002, "slf",123456));
-        producers.put(1003, new Producer(1003, "wxy",123456));
+        producers.put(1, new Producer(1, "lx",123456));
+        producers.put(2, new Producer(2, "slf",123456));
+        producers.put(3, new Producer(3, "wxy",123456));
 
     }
 
-    private static Integer initId = 1004;
+    private static Integer initId = 4;
 
     public void save(Producer producer){
         if(producer.getId() == null){

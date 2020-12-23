@@ -20,11 +20,11 @@ public class AdminDao {
 
     static{
         admins = new HashMap<Integer, Admin>();
-        admins.put(1001, new Admin(1001, "admin",123456));
+        admins.put(1, new Admin(1, "admin",123456));
 
     }
 
-    private static Integer initId = 1002;
+    private static Integer initId = 2;
 
     public void save(Admin admin){
         if(admin.getId() == null){

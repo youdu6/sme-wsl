@@ -16,12 +16,12 @@ public class CartDao {
 
     static{
         carts = new HashMap<Integer, Cart>();
-        carts.put(1001, new Cart(1001,new ArrayList<Game>(),"刘希"));
-        carts.put(1002, new Cart(1002,new ArrayList<Game>(),"孙立飞"));
-        carts.put(1003, new Cart(1003,new ArrayList<Game>(),"王新宇"));
+        carts.put(1, new Cart(1,new ArrayList<Game>(),"刘希"));
+        carts.put(2, new Cart(2,new ArrayList<Game>(),"孙立飞"));
+        carts.put(3, new Cart(3,new ArrayList<Game>(),"王新宇"));
     }
 
-    private static Integer initId = 1004;
+    private static Integer initId = 4;
 
     public void save(Cart cart){
         if(cart.getId() == null){

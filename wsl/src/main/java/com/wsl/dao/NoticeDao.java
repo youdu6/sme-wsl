@@ -1,6 +1,7 @@
 package com.wsl.dao;
 
 import com.wsl.entities.*;
+import com.wsl.mapper.NoticeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -12,22 +13,25 @@ import java.util.Map;
 @Repository
 public class NoticeDao {
 
+    @Autowired
+    NoticeMapper noticeMapper;
     private static Map<Integer, Notice> notices= null;
 
 
     static{
         notices = new HashMap<Integer, Notice>();
-        notices.put(1001, new Notice(1001, "lxnb"));
-        notices.put(1002, new Notice(1002,"slfnb"));
-        notices.put(1003, new Notice(1003, "wxycb"));
+        notices.put(1, new Notice(1, "lxnb"));
+        notices.put(2, new Notice(2,"slfnb"));
+        notices.put(3, new Notice(3, "wxycb"));
 
     }
 
-    private static Integer initId = 1004;
+    private static Integer initId = 4;
 
     public void save(Notice notice){
         if(notice.getId() == null){
             notice.setId(initId++);
+            noticeMapper.insertNotice(notice);
         }
         notices.put(notice.getId(), notice);
     }
@@ -42,6 +46,7 @@ public class NoticeDao {
     }
 
     public void delete(Integer id){
+        noticeMapper.deleteNoticeById(id);
         notices.remove(id);
     }
 }

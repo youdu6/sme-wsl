@@ -9,7 +9,16 @@ public class Game {
     private String  pName;
     private String name;
     private String type;
+    private double price;
     private Date date;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     public Integer getId() {
         return id;
@@ -51,6 +60,17 @@ public class Game {
         this.name=name;
         this.type=type;
         this.date=date;
+    }
+
+    public Game(Integer id, Integer pid, String pName, String name, String type, Date date,double price){
+        super();
+        this.id=id;
+        this.pid=pid;
+        this.pName=pName;
+        this.name=name;
+        this.type=type;
+        this.date=date;
+        this.price=price;
     }
 
 

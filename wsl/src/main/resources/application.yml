@@ -6,6 +6,5 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     initialization-mode: always
     schema:
-      - classpath:SQL/test.sql
       - classpath:SQL/表.sql
       - classpath:SQL/插入.sql
