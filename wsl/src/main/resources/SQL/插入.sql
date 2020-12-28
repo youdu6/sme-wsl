@@ -42,7 +42,6 @@ INSERT INTO 购物车
 VALUES
 ("刘希"),
 ("孙立飞"),
-("孙立飞"),
 ("王新宇");
 
 INSERT INTO 评论

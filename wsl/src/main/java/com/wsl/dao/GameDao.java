@@ -1,7 +1,6 @@
 package com.wsl.dao;
 
 import com.wsl.entities.Game;
-import com.wsl.entities.Order;
 import com.wsl.mapper.GameMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,7 +16,6 @@ public class GameDao {
 	@Autowired
 	GameMapper gameMapper;
 	private static Map<Integer, Game> games = null;
-	
 
 	static{
 		games = new HashMap<Integer, Game>();
@@ -40,7 +38,6 @@ public class GameDao {
 		games.put(game.getId(), game);
 	}
 
-	//查询所有员工
 	public Collection<Game> getAll(){
 		return games.values();
 	}

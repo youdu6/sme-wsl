@@ -3,6 +3,7 @@ package com.wsl.mapper;
 import com.wsl.entities.Cart;
 import com.wsl.entities.Comment;
 import com.wsl.entities.Game;
+import com.wsl.entities.User;
 import org.apache.ibatis.annotations.*;
 
 @Mapper
@@ -18,6 +19,9 @@ public interface CartMapper {
 
     @Insert("insert into 购物车游戏(购物车编号, 游戏编号) values(#{cart.id},#{game.id})")
     public int insertCartGame(Cart cart, Game game);
+
+    @Insert("insert into 购物车(用户) values(#{username})")
+    public int insertCart(String username);
 //
 //    @Update("update 评论 set 购物车编号=#{name}, 用户名=#{type}, 内容=#{content} where id=#{id}")
 //    public int updateCartGame(Cart cart);

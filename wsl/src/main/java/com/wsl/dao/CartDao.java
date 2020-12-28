@@ -3,8 +3,11 @@ package com.wsl.dao;
 import com.wsl.entities.Cart;
 import com.wsl.entities.Game;
 import com.wsl.entities.Order;
+import com.wsl.mapper.CartMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.servlet.http.HttpSession;
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -12,8 +15,10 @@ import java.util.*;
 public class CartDao {
 
     private static Map<Integer, Cart> carts = null;
-
-
+    @Autowired
+    UserDao userDao;
+    @Autowired
+    CartMapper cartMapper;
     static{
         carts = new HashMap<Integer, Cart>();
         carts.put(1, new Cart(1,new ArrayList<Game>(),"刘希"));
@@ -23,11 +28,11 @@ public class CartDao {
 
     private static Integer initId = 4;
 
-    public void save(Cart cart){
+    public void save(Cart cart, String username){
         if(cart.getId() == null){
             cart.setId(initId++);
         }
-
+        cartMapper.insertCart(username);
         carts.put(cart.getId(), cart);
     }
 

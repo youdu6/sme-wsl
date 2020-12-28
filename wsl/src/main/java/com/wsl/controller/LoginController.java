@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -93,9 +97,14 @@ public class LoginController {
     @PostMapping(value = "/user/register")
     public String registerSolve(@RequestParam("username") String username,
                                 @RequestParam("password") String password){
-        Collection<User> users=userDao.getAll();
+        Collection<User>  users=userDao.getAll();
+        for (User user:users){
+            if (user.getName().equals(username)){
+                return "wrong";
+            }
+        }
         userDao.save(new User(null,username,Integer.parseInt(password)));
-        cartDao.save(new Cart(null,new ArrayList<Game>(),username));
+        cartDao.save(new Cart(null,new ArrayList<Game>(),username),username);
         return "redirect:/";
     }
 }
